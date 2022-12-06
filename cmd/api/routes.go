@@ -22,6 +22,8 @@ func (app *application) routes() http.Handler {
 	mux.Get("/refresh", app.refreshToken)
 	mux.Get("/logout", app.logout)
 
+	mux.Post("/graph", app.moviesGraphQL)
+
 	mux.Route("/admin", func(mux chi.Router) {
 		mux.Use(app.authRequired)
 
